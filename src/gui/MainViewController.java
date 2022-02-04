@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,7 +33,7 @@ public class MainViewController implements Initializable{
 	}
 	@FXML
 	public void onMenuItemDepartmentAction() {
-		System.out.println("o");
+		loadView("/gui/DepartmentList.fxml");
 	}
 	@FXML
 	public void onMenuItemAboutAction() {
@@ -60,9 +61,10 @@ public class MainViewController implements Initializable{
 			mainVBox.getChildren().addAll(newVBox.getChildren());
 			
 		}
-		catch{
-			Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), AlertType.ERROR);;
-		}
+		catch(IOException e){
+			Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), AlertType.ERROR);
+		
 	}
 
-}
+	}
+	}
